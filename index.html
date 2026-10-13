@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ================= SEO ================= -->
+  <title>One-K Coffee — Good Coffee, Better Days | Addis Ababa</title>
+  <meta name="description" content="One-K Coffee is a cozy coffee shop in Addis Ababa, Ethiopia — handcrafted espresso classics, traditional Ethiopian jebena buna, fresh pastries and warm hospitality. Good Coffee • Better Days.">
+  <meta name="author" content="One-K Coffee">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#2E1B0F">
+  <link rel="canonical" href="https://one-kcoffee.base44.app/">
+
+  <!-- Open Graph / social sharing (EDIT: replace og:image with your own hosted logo/photo URL) -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="One-K Coffee">
+  <meta property="og:title" content="One-K Coffee — Good Coffee, Better Days">
+  <meta property="og:description" content="Handcrafted coffee and warm hospitality in the heart of Addis Ababa, Ethiopia.">
+  <meta property="og:url" content="https://one-kcoffee.base44.app/">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=1200&q=60">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="One-K Coffee — Good Coffee, Better Days">
+  <meta name="twitter:description" content="Handcrafted coffee in the heart of Addis Ababa, Ethiopia.">
+
+  <!-- Favicon (inline SVG cup) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%232E1B0F'/%3E%3Ccircle cx='32' cy='32' r='26' fill='none' stroke='%23D9A441' stroke-width='3'/%3E%3Cpath d='M21 30h22v3.5c0 7.5-5 12.5-11 12.5s-11-5-11-12.5z' fill='%23FDF9F3'/%3E%3Cpath d='M32 15c-4 4.5 4 6.5 0 11' fill='none' stroke='%23D9A441' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+
+  <!-- Performance: preconnects -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Local business structured data (opening hours can be added as
+       "openingHoursSpecification" once you confirm them) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CafeOrCoffeeShop",
+    "name": "One-K Coffee",
+    "slogan": "Good Coffee • Better Days",
+    "description": "Cozy coffee shop in Addis Ababa serving espresso classics, traditional Ethiopian coffee and fresh pastries.",
+    "telephone": "+251924135379",
+    "url": "https://one-kcoffee.base44.app",
+    "hasMap": "https://maps.app.goo.gl/Rnk4CHhcoqHNMVEb6",
+    "address": { "@type": "PostalAddress", "addressLocality": "Addis Ababa", "addressCountry": "ET" },
+    "servesCuisine": ["Coffee", "Ethiopian"]
+  }
+  </script>
+
+  <style>
+  /* =====================================================
+     1) DESIGN TOKENS & BASE
+  ===================================================== */
+  :root{
+    --brown-950:#1B0F07;
+    --brown-900:#2E1B0F;
+    --brown-800:#3F2716;
+    --gold:#D9A441;
+    --gold-2:#E9C98B;
+    --cream:#F6EEE1;
+    --milk:#FDF9F3;
+    --paper:#FAF3E8;
+    --ink:#241505;
+    --mut:#6E5B49;          /* muted text on light bg  */
+    --mut-l:#CBB59B;        /* muted text on dark bg   */
+    --radius:18px;
+    --shadow:0 18px 45px -18px rgba(28,16,6,.35);
+    --ff-head:'Playfair Display',Georgia,serif;
+    --ff-body:'Poppins',system-ui,-apple-system,sans-serif;
+    --ff-script:'Dancing Script',cursive;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth;scroll-padding-top:90px}
+  body{font-family:var(--ff-body);background:var(--paper);color:var(--ink);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  ul{list-style:none}
+  button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+  h1,h2,h3{font-family:var(--ff-head);font-weight:700;line-height:1.15}
+  ::selection{background:var(--gold);color:var(--ink)}
+  :focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px}
+  body.no-scroll{overflow:hidden}
+  .ic{width:20px;height:20px;flex:none}
+  .container{width:min(1180px,92%);margin-inline:auto}
+  .section{padding:clamp(72px,9vw,110px) 0}
+  .skip-link{position:absolute;left:-999px;top:0;background:var(--gold);color:var(--ink);padding:10px 18px;z-index:200;border-radius:0 0 10px 0;font-weight:600}
+  .skip-link:focus{left:0}
+
+  .eyebrow{display:inline-flex;align-items:center;gap:12px;text-transform:uppercase;letter-spacing:.24em;font-size:.76rem;font-weight:600;color:#9A7328}
+  .eyebrow::before{content:"";width:36px;height:2px;background:var(--gold);border-radius:2px}
+  .dark .eyebrow{color:var(--gold-2)}
+  h2{font-size:clamp(1.9rem,3.6vw,2.7rem);margin:.4em 0 .45em}
+  .section-sub{max-width:560px;color:var(--mut)}
+  .dark .section-sub{color:var(--mut-l)}
+  .section-head{margin-bottom:clamp(36px,5vw,54px)}
+  .section-head.center{text-align:center}
+  .section-head.center .eyebrow::after{content:"";width:36px;height:2px;background:var(--gold);border-radius:2px}
+  .section-head.center .section-sub{margin-inline:auto}
+
+  /* Buttons */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 30px;border-radius:999px;font-weight:600;font-size:.95rem;letter-spacing:.02em;border:1.5px solid transparent;transition:.25s ease}
+  .btn .ic{width:18px;height:18px}
+  .btn-gold{background:var(--gold);color:var(--ink);box-shadow:0 12px 26px -14px rgba(217,164,65,.8)}
+  .btn-gold:hover{background:#E4B356;transform:translateY(-2px)}
+  .btn-ghost{border-color:rgba(246,238,225,.5);color:var(--cream)}
+  .btn-ghost:hover{background:rgba(246,238,225,.12);border-color:var(--cream)}
+  .btn-sm{padding:10px 20px;font-size:.85rem}
+  .btn-block{width:100%}
+
+  .notice{margin-top:16px;padding:12px 16px;border-left:3px solid var(--gold);background:rgba(217,164,65,.08);border-radius:0 10px 10px 0;font-size:.85rem;color:var(--gold-2)}
+  [data-reveal]{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+  [data-reveal].in{opacity:1;transform:none}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+
+  /* =====================================================
+     2) HEADER & NAVIGATION
+  ===================================================== */
+  .site-header{position:fixed;inset:0 0 auto 0;z-index:60;transition:background .3s,box-shadow .3s}
+  .site-header.scrolled{background:rgba(27,15,7,.92);backdrop-filter:blur(10px);box-shadow:0 12px 30px -18px rgba(0,0,0,.6)}
+  .nav-wrap{display:flex;align-items:center;gap:26px;height:80px}
+  .brand{display:flex;align-items:center;gap:12px;margin-right:auto}
+  .brand-mark{width:46px;height:46px}
+  .brand-text{font-weight:700;font-size:1.2rem;color:var(--cream);line-height:1.05}
+  .brand-text small{display:block;font-size:.58rem;font-weight:600;letter-spacing:.5em;color:var(--gold);margin-top:3px}
+  .nav-links{display:flex;align-items:center;gap:32px}
+  .nav-link{position:relative;color:var(--cream);font-size:.92rem;font-weight:500;padding:6px 0;opacity:.85;transition:.25s}
+  .nav-link::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--gold);transition:width .25s}
+  .nav-link:hover,.nav-link.is-active{opacity:1}
+  .nav-link:hover::after,.nav-link.is-active::after{width:100%}
+  .nav-cta-mobile{display:none}
+  .nav-toggle{display:none;flex-direction:column;gap:5px;padding:8px}
+  .nav-toggle span{width:24px;height:2px;background:var(--cream);border-radius:2px;transition:.3s}
+  .nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+  .nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+  @media (max-width:920px){
+    .nav-call{display:none}
+    .nav-toggle{display:inline-flex}
+    .site-nav{position:fixed;top:0;right:0;z-index:55;height:100dvh;height:100vh;width:min(320px,84vw);background:var(--brown-950);padding:100px 34px 40px;transform:translateX(105%);transition:transform .35s ease;box-shadow:-24px 0 60px rgba(0,0,0,.45)}
+    .site-nav.open{transform:none}
+    .nav-links{flex-direction:column;align-items:flex-start;gap:6px}
+    .nav-link{display:block;width:100%;font-size:1.05rem;padding:11px 0}
+    .nav-cta-mobile{display:block;margin-top:20px;width:100%}
+    .nav-cta-mobile .btn{width:100%}
+    .nav-overlay{position:fixed;inset:0;z-index:50;background:rgba(15,8,3,.55);opacity:0;pointer-events:none;transition:opacity .3s}
+    .nav-overlay.show{opacity:1;pointer-events:auto}
+  }
+
+  /* =====================================================
+     3) HERO — video background behind the coffee cup
+  ===================================================== */
+  .hero{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--cream);overflow:hidden}
+  .hero-media{position:absolute;inset:0;z-index:0}
+  .hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=1920&q=60') center/cover no-repeat}
+  .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease;pointer-events:none}
+  .hero.video-ready .hero-video{opacity:1}
+  .hero.no-video .hero-video{display:none}
+  .hero-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,11,4,.66) 0%,rgba(20,11,4,.42) 45%,rgba(20,11,4,.82) 100%)}
+  .hero-content{position:relative;z-index:2;padding:130px 0 90px}
+  .hero-logo{width:clamp(96px,13vw,132px);height:clamp(96px,13vw,132px);filter:drop-shadow(0 14px 30px rgba(0,0,0,.45))}
+  .hero-eyebrow{margin:20px 0 8px;letter-spacing:.4em;text-transform:uppercase;font-size:.78rem;font-weight:500;color:var(--gold-2)}
+  .hero-title{font-family:var(--ff-body);font-weight:800}
+  .hero-title .t1{display:block;font-size:clamp(3.1rem,9vw,5.4rem);letter-spacing:.01em}
+  .hero-title .t1 em{font-style:normal;color:var(--gold)}
+  .hero-title .t2{display:block;font-size:clamp(.95rem,2vw,1.3rem);font-weight:600;letter-spacing:.45em;color:var(--gold);margin-top:6px}
+  .hero-tagline{font-family:var(--ff-script);font-weight:700;font-size:clamp(1.6rem,3.4vw,2.3rem);color:var(--gold-2);margin-top:16px}
+  .hero-desc{max-width:540px;margin:18px auto 0;color:rgba(246,238,225,.88);font-size:1.02rem}
+  .hero-cta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:36px}
+  .hero-scroll{position:absolute;left:50%;bottom:24px;transform:translateX(-50%);z-index:2;color:var(--cream);opacity:.75;width:44px;height:44px;display:grid;place-items:center;border:1px solid rgba(246,238,225,.35);border-radius:50%}
+  @media (prefers-reduced-motion:no-preference){
+    .hero-content>*{opacity:0;animation:fadeUp .9s cubic-bezier(.22,.61,.36,1) forwards}
+    .hero-content>*:nth-child(1){animation-delay:.1s}.hero-content>*:nth-child(2){animation-delay:.2s}
+    .hero-content>*:nth-child(3){animation-delay:.3s}.hero-content>*:nth-child(4){animation-delay:.4s}
+    .hero-content>*:nth-child(5){animation-delay:.5s}.hero-content>*:nth-child(6){animation-delay:.6s}
+    .hero-scroll{animation:bob 2.2s ease-in-out infinite}
+    @keyframes bob{50%{transform:translate(-50%,8px)}}
+  }
+
+  /* =====================================================
+     4) ABOUT
+  ===================================================== */
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,80px);align-items:center}
+  .about-media{position:relative}
+  .about-media::before{content:"";position:absolute;top:26px;left:26px;right:-22px;bottom:-22px;border:2px solid var(--gold);border-radius:var(--radius);opacity:.55;z-index:0}
+  .about-media img{position:relative;z-index:1;width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:var(--radius);box-shadow:var(--shadow)}
+  .about-badge{position:absolute;z-index:2;left:-22px;bottom:30px;display:flex;align-items:center;gap:12px;background:var(--brown-900);color:var(--cream);border:1px solid rgba(217,164,65,.4);border-radius:14px;padding:14px 18px;box-shadow:var(--shadow)}
+  .about-badge .ic{width:26px;height:26px;color:var(--gold)}
+  .about-badge strong{display:block;font-size:.92rem;line-height:1.3}
+  .about-badge span{font-size:.75rem;color:var(--mut-l)}
+  .about-copy p{color:var(--mut)}
+  .about-copy h2{color:var(--ink)}
+  .feature-list{margin-top:10px}
+  .feature-list li{display:flex;gap:16px;align-items:flex-start;padding:15px 0;border-bottom:1px dashed rgba(110,91,73,.28)}
+  .feature-list li:last-child{border-bottom:0}
+  .feat-ic{width:46px;height:46px;flex:none;display:grid;place-items:center;border-radius:12px;background:rgba(217,164,65,.16);color:#8A6420}
+  .feature-list strong{display:block;font-size:.98rem}
+  .feature-list span{font-size:.88rem;color:var(--mut)}
+  .text-link{display:inline-flex;align-items:center;gap:8px;margin-top:20px;font-weight:600;color:#8A6420;transition:gap .25s}
+  .text-link:hover{gap:13px}
+  @media (max-width:880px){.grid-2{grid-template-columns:1fr}.about-badge{left:14px}}
+
+  /* =====================================================
+     5) MENU (dark)
+  ===================================================== */
+  .menu{background:linear-gradient(180deg,#2E1B0F 0%,#241407 100%);color:var(--cream)}
+  .menu h2{color:var(--cream)}
+  .menu-filters{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:42px}
+  .mf-btn{padding:9px 22px;border-radius:999px;border:1px solid rgba(233,201,139,.3);color:var(--cream);font-size:.85rem;font-weight:500;letter-spacing:.03em;transition:.25s}
+  .mf-btn:hover{border-color:var(--gold);color:var(--gold)}
+  .mf-btn.active{background:var(--gold);border-color:var(--gold);color:var(--ink);font-weight:600}
+  .menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  .menu-card{display:flex;flex-direction:column;background:rgba(253,249,243,.045);border:1px solid rgba(233,201,139,.16);border-radius:var(--radius);overflow:hidden;transition:transform .3s,border-color .3s,box-shadow .3s}
+  .menu-card:hover{transform:translateY(-6px);border-color:rgba(217,164,65,.55);box-shadow:0 26px 50px -24px rgba(0,0,0,.6)}
+  .menu-card.hide{display:none}
+  .menu-card.pop{animation:fadeUp .45s ease both}
+  .mc-media{position:relative;aspect-ratio:16/10;overflow:hidden}
+  .mc-media img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+  .menu-card:hover .mc-media img{transform:scale(1.06)}
+  .mc-tag{position:absolute;top:14px;left:14px;background:var(--gold);color:var(--ink);font-size:.66rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;padding:5px 12px;border-radius:999px}
+  .mc-body{padding:20px 22px 24px}
+  .mc-row{display:flex;justify-content:space-between;align-items:baseline;gap:14px}
+  .mc-row h3{font-size:1.22rem;color:var(--cream)}
+  .mc-price{font-family:var(--ff-head);font-weight:700;color:var(--gold);flex:none}
+  .mc-body p{margin-top:8px;font-size:.9rem;color:var(--mut-l)}
+  .menu-note{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:8px;margin-top:40px;font-size:.92rem;color:var(--mut-l)}
+  .menu-note .ic{width:16px;height:16px;color:var(--gold)}
+  .menu-note a{color:var(--gold);font-weight:600}
+  @media (max-width:1000px){.menu-grid{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:640px){.menu-grid{grid-template-columns:1fr}}
+
+  /* =====================================================
+     6) GALLERY
+  ===================================================== */
+  .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .g-item{position:relative;aspect-ratio:1/1;border-radius:14px;overflow:hidden;margin:0}
+  .g-btn{display:block;width:100%;height:100%}
+  .g-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+  .g-item::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 52%,rgba(20,11,4,.72));opacity:0;transition:.35s}
+  .g-cap{position:absolute;left:16px;right:16px;bottom:12px;z-index:2;color:var(--cream);font-size:.85rem;opacity:0;transform:translateY(8px);transition:.35s}
+  .g-item:hover::after,.g-item:focus-within::after{opacity:1}
+  .g-item:hover .g-cap,.g-item:focus-within .g-cap{opacity:1;transform:none}
+  .g-item:hover img{transform:scale(1.07)}
+  @media (max-width:900px){.gallery-grid{grid-template-columns:repeat(2,1fr);gap:10px}}
+
+  /* Lightbox */
+  .lightbox{position:fixed;inset:0;z-index:90;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(16,9,3,.93);backdrop-filter:blur(6px)}
+  .lightbox[hidden]{display:none}
+  .lb-figure{max-width:min(1000px,92vw);margin:0}
+  .lb-figure img{max-width:100%;max-height:78vh;margin:0 auto;border-radius:12px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+  .lb-figure figcaption{text-align:center;margin-top:14px;color:var(--cream);font-size:.95rem}
+  .lb-btn{position:absolute;width:46px;height:46px;display:grid;place-items:center;border-radius:50%;border:1px solid rgba(233,201,139,.4);background:rgba(253,249,243,.08);color:var(--cream);transition:.25s}
+  .lb-btn:hover{background:var(--gold);border-color:var(--gold);color:var(--ink)}
+  .lb-close{top:20px;right:20px}
+  .lb-prev{left:14px;top:50%;transform:translateY(-50%)}
+  .lb-next{right:14px;top:50%;transform:translateY(-50%)}
+
+  /* =====================================================
+     7) VISIT US — hours / contact / map (dark)
+  ===================================================== */
+  .visit{background:linear-gradient(180deg,#241407 0%,#1B0F07 100%);color:var(--cream)}
+  .visit h2,.visit h3{color:var(--cream)}
+  .visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+  .card{background:rgba(253,249,243,.045);border:1px solid rgba(233,201,139,.15);border-radius:var(--radius);padding:clamp(26px,4vw,40px)}
+  .card-ic{width:54px;height:54px;display:grid;place-items:center;border-radius:14px;background:rgba(217,164,65,.14);color:var(--gold);margin-bottom:18px}
+  .card-ic .ic{width:26px;height:26px}
+  .card h3{font-size:1.5rem;margin-bottom:18px}
+  #hoursList li,#hoursListFooter li{display:flex;align-items:baseline;gap:10px;padding:10px 0;font-size:.95rem;color:var(--cream)}
+  #hoursList .dots{flex:1;border-bottom:1px dotted rgba(233,201,139,.35);transform:translateY(-4px)}
+  #hoursList strong,#hoursListFooter strong{font-weight:500;color:var(--gold-2);font-size:.9rem}
+  #hoursList li.pending strong,#hoursListFooter li.pending strong{color:var(--mut-l);font-style:italic;font-size:.82rem}
+  #hoursListFooter{font-size:.88rem}
+  #hoursListFooter li{justify-content:space-between;color:var(--mut-l);padding:5px 0}
+  .contact-list li{display:flex;gap:14px;align-items:flex-start;padding:11px 0}
+  .contact-list .ic{width:20px;height:20px;color:var(--gold);margin-top:4px}
+  .contact-list strong{display:block;font-size:.72rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--mut-l)}
+  .contact-list a,.contact-list .val{color:var(--cream);font-weight:500}
+  .contact-list a:hover{color:var(--gold)}
+  .contact-card .btn{margin-top:16px}
+  .socials{display:flex;gap:12px;margin-top:24px}
+  .soc{width:42px;height:42px;display:grid;place-items:center;border-radius:50%;border:1px solid rgba(233,201,139,.3);color:var(--cream);transition:.25s}
+  .soc:hover{background:var(--gold);border-color:var(--gold);color:var(--ink);transform:translateY(-3px)}
+  .visit-banner{position:relative;display:flex;align-items:center;min-height:220px;margin-top:26px;border-radius:var(--radius);overflow:hidden;background:url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1600&q=60') center/cover}
+  .visit-banner::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,11,4,.88),rgba(20,11,4,.45))}
+  .vb-inner{position:relative;z-index:2;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;width:min(1180px,92%);margin-inline:auto;padding:34px 0}
+  .vb-inner p{color:var(--mut-l);max-width:460px}
+  @media (max-width:880px){.visit-grid{grid-template-columns:1fr}}
+
+  /* =====================================================
+     8) FOOTER
+  ===================================================== */
+  .footer{background:#160C05;color:#E9DDCB;padding-top:70px}
+  .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1.2fr 1.2fr;gap:40px;padding-bottom:54px}
+  .f-logo{width:132px;height:132px}
+  .f-tag{font-family:var(--ff-script);font-size:1.45rem;color:var(--gold);margin:12px 0 8px}
+  .f-desc{font-size:.9rem;color:var(--mut-l);max-width:300px}
+  .f-col h4{font-family:var(--ff-body);font-size:.82rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+  .f-col ul li{padding:5px 0;font-size:.92rem}
+  .f-col a:hover{color:var(--gold)}
+  .f-contact li{display:flex;gap:10px;align-items:flex-start}
+  .f-contact .ic{width:16px;height:16px;color:var(--gold);margin-top:5px}
+  .footer-bar{border-top:1px solid rgba(233,201,139,.14);padding:20px 0}
+  .fb-inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;font-size:.85rem;color:#A8957C}
+  .fb-note{font-family:var(--ff-script);font-size:1.1rem;color:var(--gold)}
+  @media (max-width:900px){.footer-grid{grid-template-columns:1fr 1fr}}
+  @media (max-width:560px){.footer-grid{grid-template-columns:1fr}}
+
+  /* =====================================================
+     9) FLOATING BUTTONS
+  ===================================================== */
+  .fab{position:fixed;right:20px;z-index:50;width:52px;height:52px;display:grid;place-items:center;border-radius:50%;box-shadow:0 14px 30px -12px rgba(0,0,0,.55);transition:.25s}
+  .fab .ic{width:22px;height:22px}
+  .fab-call{bottom:22px;background:var(--gold);color:var(--ink)}
+  .fab-call:hover{transform:scale(1.08)}
+  .fab-top{bottom:86px;background:var(--brown-900);color:var(--cream);border:1px solid rgba(233,201,139,.35);opacity:0;pointer-events:none;transform:translateY(10px)}
+  .fab-top.show{opacity:1;pointer-events:auto;transform:none}
+
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{animation:none!important;transition:none!important}
+  }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <noscript><style>[data-reveal]{opacity:1;transform:none}</style></noscript>
+
+  <!-- =====================================================
+       SVG SPRITE — logo + icons
+       EDIT: To use your real logo image instead of this SVG
+       recreation, replace any <svg class="..."><use href="#logo-..."></use></svg>
+       with:  <img src="logo.png" alt="One-K Coffee logo" width="132" height="132">
+  ===================================================== -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+    <!-- Logo mark: cup + steam + bean in gold ring -->
+    <symbol id="logo-mark" viewBox="0 0 120 120">
+      <circle cx="60" cy="60" r="58" fill="#2E1B0F"/>
+      <circle cx="60" cy="60" r="52.5" fill="none" stroke="#D9A441" stroke-width="2.5"/>
+      <path d="M60 24c-5 6 5 9 0 15" fill="none" stroke="#D9A441" stroke-width="3.2" stroke-linecap="round"/>
+      <path d="M49 28c-4 5 4 7 0 12" fill="none" stroke="#E9C98B" stroke-width="2.6" stroke-linecap="round"/>
+      <path d="M71 28c-4 5 4 7 0 12" fill="none" stroke="#E9C98B" stroke-width="2.6" stroke-linecap="round"/>
+      <ellipse cx="60" cy="48" rx="20" ry="4.6" fill="#FDF9F3"/>
+      <ellipse cx="60" cy="48" rx="14.5" ry="3" fill="#C08A45"/>
+      <path d="M40 49.5h40v3.5c0 10-8.5 16.5-20 16.5s-20-6.5-20-16.5z" fill="#FDF9F3"/>
+      <path d="M80.5 51.5c6.5-.5 10.5 2.5 10.5 6.5 0 4.5-4.5 7.5-11 7" fill="none" stroke="#FDF9F3" stroke-width="3.4" stroke-linecap="round"/>
+      <path d="M36 80c5 4.5 13.5 7 24 7s19-2.5 24-7" fill="none" stroke="#FDF9F3" stroke-width="3.4" stroke-linecap="round"/>
+      <ellipse cx="36" cy="84" rx="5.5" ry="8.5" transform="rotate(-32 36 84)" fill="#8A5A33"/>
+      <path d="M33 77.5c2.5 3.5 4 8 4.5 12" fill="none" stroke="#2E1B0F" stroke-width="1.4"/>
+      <path d="M45 89c5.5-1.5 9-5.5 9.5-11-6.5 1-10 5-9.5 11z" fill="#4C7A3F"/>
+    </symbol>
+
+    <!-- Full logo with wordmark (footer) -->
+    <symbol id="logo-full" viewBox="0 0 200 200">
+      <circle cx="100" cy="100" r="96" fill="#2E1B0F"/>
+      <circle cx="100" cy="100" r="90" fill="none" stroke="#D9A441" stroke-width="3.5"/>
+      <g transform="translate(43,10) scale(0.95)">
+        <path d="M60 24c-5 6 5 9 0 15" fill="none" stroke="#D9A441" stroke-width="3.2" stroke-linecap="round"/>
+        <path d="M49 28c-4 5 4 7 0 12" fill="none" stroke="#E9C98B" stroke-width="2.6" stroke-linecap="round"/>
+        <path d="M71 28c-4 5 4 7 0 12" fill="none" stroke="#E9C98B" stroke-width="2.6" stroke-linecap="round"/>
+        <ellipse cx="60" cy="48" rx="20" ry="4.6" fill="#FDF9F3"/>
+        <ellipse cx="60" cy="48" rx="14.5" ry="3" fill="#C08A45"/>
+        <path d="M40 49.5h40v3.5c0 10-8.5 16.5-20 16.5s-20-6.5-20-16.5z" fill="#FDF9F3"/>
+        <path d="M80.5 51.5c6.5-.5 10.5 2.5 10.5 6.5 0 4.5-4.5 7.5-11 7" fill="none" stroke="#FDF9F3" stroke-width="3.4" stroke-linecap="round"/>
+        <path d="M36 80c5 4.5 13.5 7 24 7s19-2.5 24-7" fill="none" stroke="#FDF9F3" stroke-width="3.4" stroke-linecap="round"/>
+        <ellipse cx="36" cy="84" rx="5.5" ry="8.5" transform="rotate(-32 36 84)" fill="#8A5A33"/>
+        <path d="M45 89c5.5-1.5 9-5.5 9.5-11-6.5 1-10 5-9.5 11z" fill="#4C7A3F"/>
+      </g>
+      <text x="100" y="121" text-anchor="middle" font-family="Poppins, sans-serif" font-size="36" font-weight="800" fill="#FDF9F3">One-<tspan fill="#D9A441">K</tspan></text>
+      <text x="103" y="143" text-anchor="middle" font-family="Poppins, sans-serif" font-size="15" font-weight="600" letter-spacing="7" fill="#D9A441">COFFEE</text>
+      <text x="100" y="163" text-anchor="middle" font-family="'Dancing Script', cursive" font-size="15" fill="#FDF9F3">Good Coffee • Better Days</text>
+      <path d="M60 175h30M110 175h30" stroke="#D9A441" stroke-width="1.5" stroke-linecap="round"/>
+      <ellipse cx="100" cy="175" rx="4" ry="6" fill="#8A5A33"/>
+      <path d="M98.5 170.5c1.5 2.5 2 5.5 2 9" fill="none" stroke="#2E1B0F" stroke-width="1.1"/>
+    </symbol>
+
+    <!-- UI icons (stroke = currentColor) -->
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="10" r="3" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 6v6l4 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+    <symbol id="i-cup" viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M6 1v3M10 1v3M14 1v3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-bean" viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="6.5" ry="9.5" transform="rotate(35 12 12)" fill="currentColor"/><path d="M8 6c4 3 5 9 8 12" fill="none" stroke="#2E1B0F" stroke-width="1.6"/></symbol>
+    <symbol id="i-fb" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-ig" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M17.5 6.5h.01" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-tt" viewBox="0 0 24 24"><path d="M16.6 3c.4 2.1 1.8 3.7 3.9 4v3.1c-1.5 0-2.9-.5-3.9-1.2v6.6A6.3 6.3 0 1 1 10.3 9.2v3.3a3.1 3.1 0 1 0 3.1 3.1V3h3.2z" fill="currentColor"/></symbol>
+    <symbol id="i-tg" viewBox="0 0 24 24"><path d="M22 2 11 13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 2 15 22l-4-9-9-4 20-7z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-arrow-r" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-chev-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-chev-up" viewBox="0 0 24 24"><path d="m18 15-6-6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-chev-l" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-chev-r" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  </svg>
+
+  <!-- ================= HEADER ================= -->
+  <header class="site-header" id="siteHeader">
+    <div class="container nav-wrap">
+      <a href="#home" class="brand" aria-label="One-K Coffee — back to top">
+        <svg class="brand-mark" aria-hidden="true"><use href="#logo-mark"/></svg>
+        <span class="brand-text">One-K<small>COFFEE</small></span>
+      </a>
+      <nav class="site-nav" id="siteNav" aria-label="Primary">
+        <ul class="nav-links">
+          <li><a class="nav-link is-active" href="#home">Home</a></li>
+          <li><a class="nav-link" href="#about">About</a></li>
+          <li><a class="nav-link" href="#menu">Menu</a></li>
+          <li><a class="nav-link" href="#gallery">Gallery</a></li>
+          <li><a class="nav-link" href="#visit">Visit Us</a></li>
+          <li class="nav-cta-mobile"><a class="btn btn-gold btn-sm" data-tel href="#"><svg class="ic"><use href="#i-phone"/></svg> Call Now</a></li>
+        </ul>
+      </nav>
+      <a class="btn btn-gold btn-sm nav-call" data-tel href="#"><svg class="ic"><use href="#i-phone"/></svg> Call Now</a>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+  <div class="nav-overlay" id="navOverlay"></div>
+
+  <main id="main">
+    <!-- ================= HERO ================= -->
+    <section class="hero" id="home">
+      <div class="hero-media" aria-hidden="true">
+        <div class="hero-bg"></div>
+        <!-- Video source is set in SITE_DATA (hero.videos) below.
+             EDIT: you can also save the MP4 next to this file as "hero-video-1.mp4"
+             and use that instead — it loads faster and won't depend on an external host. -->
+        <video class="hero-video" id="heroVideo" muted playsinline preload="auto" aria-hidden="true" tabindex="-1"
+               poster="https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=1920&q=60"></video>
+        <div class="hero-shade"></div>
+      </div>
+      <div class="container hero-content">
+        <svg class="hero-logo" role="img" aria-label="One-K Coffee logo"><use href="#logo-mark"/></svg>
+        <p class="hero-eyebrow">Addis Ababa · Ethiopia</p>
+        <h1 class="hero-title"><span class="t1">One-<em>K</em></span><span class="t2">COFFEE</span></h1>
+        <p class="hero-tagline">Good Coffee • Better Days</p>
+        <p class="hero-desc">Handcrafted coffee and warm hospitality in the heart of Addis&nbsp;Ababa — where every cup is brewed to make your day better.</p>
+        <div class="hero-cta">
+          <a class="btn btn-gold" href="#menu">Explore Our Menu <svg class="ic"><use href="#i-arrow-r"/></svg></a>
+          <a class="btn btn-ghost" data-maps href="#"><svg class="ic"><use href="#i-pin"/></svg> Find Us on the Map</a>
+        </div>
+      </div>
+      <a class="hero-scroll" href="#about" aria-label="Scroll down to About"><svg class="ic"><use href="#i-chev-down"/></svg></a>
+    </section>
+
+    <!-- ================= ABOUT ================= -->
+    <section class="section" id="about">
+      <div class="container grid-2">
+        <div class="about-media" data-reveal>
+          <!-- EDIT: replace with photos of your own shop -->
+          <img src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?auto=format&fit=crop&w=900&q=60"
+               alt="Barista preparing coffee behind the counter" loading="lazy" decoding="async">
+          <div class="about-badge">
+            <svg class="ic"><use href="#i-cup"/></svg>
+            <div><strong>Brewed Fresh Daily</strong><span>with love, in Addis Ababa</span></div>
+          </div>
+        </div>
+        <div class="about-copy">
+          <p class="eyebrow" data-reveal>Our Story</p>
+          <h2 data-reveal>Rooted in Ethiopia's Coffee Heritage</h2>
+          <!-- EDIT: personalize this story text any time -->
+          <p data-reveal>Ethiopia is the birthplace of coffee — and at One-K Coffee we are proud to carry that tradition into every cup. From the first aroma to the last sip, everything we serve is prepared with care, patience, and a genuine love for the craft.</p>
+          <p data-reveal>Whether you're catching up with friends, taking a quiet moment for yourself, or powering through a busy day in Addis Ababa, One-K is a warm place to slow down and enjoy the little ritual that makes everything better.</p>
+          <ul class="feature-list" data-reveal>
+            <li><span class="feat-ic"><svg class="ic"><use href="#i-bean"/></svg></span><div><strong>Quality Ethiopian Beans</strong><span>Carefully selected for a rich, honest cup.</span></div></li>
+            <li><span class="feat-ic"><svg class="ic"><use href="#i-cup"/></svg></span><div><strong>Handcrafted Drinks</strong><span>From espresso classics to traditional jebena buna.</span></div></li>
+            <li><span class="feat-ic"><svg class="ic"><use href="#i-heart"/></svg></span><div><strong>A Warm Welcome</strong><span>A cozy space for conversation, work, and relaxation.</span></div></li>
+          </ul>
+          <a class="text-link" href="#menu" data-reveal>See what we brew <svg class="ic"><use href="#i-arrow-r"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= MENU ================= -->
+    <section class="section menu dark" id="menu">
+      <div class="container">
+        <div class="section-head center">
+          <p class="eyebrow" data-reveal>Our Menu</p>
+          <h2 data-reveal>Brewed to Make Your Day</h2>
+          <p class="section-sub" data-reveal>From quick espresso shots to the slow ritual of a traditional Ethiopian coffee ceremony.</p>
+        </div>
+        <div class="menu-filters" id="menuFilters" role="group" aria-label="Filter menu"></div>
+        <div class="menu-grid" id="menuGrid"></div>
+        <noscript><p class="menu-note">Please enable JavaScript to view the full menu — or call us at +251 924 135 379.</p></noscript>
+        <p class="menu-note" data-reveal>
+          <svg class="ic"><use href="#i-phone"/></svg>
+          For today's prices &amp; specials, <a data-tel href="#">call us</a> or ask at the counter.
+        </p>
+      </div>
+    </section>
+
+    <!-- ================= GALLERY ================= -->
+    <section class="section" id="gallery">
+      <div class="container">
+        <div class="section-head center">
+          <p class="eyebrow" data-reveal>Gallery</p>
+          <h2 data-reveal>Moments at One-K</h2>
+          <p class="section-sub" data-reveal>A glimpse of the coffee, the space, and the moments that make One-K special.</p>
+        </div>
+        <div class="gallery-grid" id="galleryGrid"></div>
+        <noscript><p class="notice">Please enable JavaScript to view the photo gallery.</p></noscript>
+      </div>
+    </section>
+
+    <!-- ================= VISIT / HOURS / CONTACT ================= -->
+    <section class="section visit dark" id="visit">
+      <div class="container">
+        <div class="section-head center">
+          <p class="eyebrow" data-reveal>Visit Us</p>
+          <h2 data-reveal>Come Say Hello</h2>
+          <p class="section-sub" data-reveal>We'd love to serve you. Find our hours, give us a call, or get directions below.</p>
+        </div>
+
+        <div class="visit-grid">
+          <!-- Opening hours -->
+          <div class="card" data-reveal>
+            <div class="card-ic"><svg class="ic"><use href="#i-clock"/></svg></div>
+            <h3>Opening Hours</h3>
+            <ul id="hoursList"></ul>
+            <p class="notice" id="hoursNotice">Our hours are being updated — please call to confirm before you visit.</p>
+          </div>
+
+          <!-- Contact -->
+          <div class="card contact-card" data-reveal>
+            <div class="card-ic"><svg class="ic"><use href="#i-pin"/></svg></div>
+            <h3>Find Us &amp; Get in Touch</h3>
+            <ul class="contact-list">
+              <li><svg class="ic"><use href="#i-phone"/></svg><div><strong>Phone</strong><a data-tel data-tel-text href="#"></a></div></li>
+              <li><svg class="ic"><use href="#i-pin"/></svg><div><strong>Location</strong><span class="val" data-address></span></div></li>
+              <li><svg class="ic"><use href="#i-globe"/></svg><div><strong>Website</strong><a data-website href="#" target="_blank" rel="noopener"></a></div></li>
+            </ul>
+            <a class="btn btn-gold btn-block" data-maps href="#" target="_blank" rel="noopener"><svg class="ic"><use href="#i-pin"/></svg> Open in Google Maps</a>
+            <!-- EDIT: add your social page URLs in SITE_DATA below -->
+            <div class="socials" id="socialVisit" aria-label="Social media"></div>
+          </div>
+        </div>
+
+        <div class="visit-banner" data-reveal>
+          <div class="vb-inner">
+            <div>
+              <h3>Craving a cup?</h3>
+              <p>We're easy to find in Addis Ababa. Get directions and come enjoy Good Coffee • Better Days with us.</p>
+            </div>
+            <a class="btn btn-gold" data-maps href="#" target="_blank" rel="noopener">Get Directions <svg class="ic"><use href="#i-arrow-r"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <svg class="f-logo" role="img" aria-label="One-K Coffee logo"><use href="#logo-full"/></svg>
+        <p class="f-tag">Good Coffee • Better Days</p>
+        <p class="f-desc">Your neighborhood coffee shop in Addis Ababa, Ethiopia.</p>
+        <div class="socials" id="socialFooter" aria-label="Social media"></div>
+      </div>
+      <nav class="f-col" aria-label="Footer">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#visit">Visit Us</a></li>
+        </ul>
+      </nav>
+      <div class="f-col">
+        <h4>Contact</h4>
+        <ul class="f-contact">
+          <li><svg class="ic"><use href="#i-phone"/></svg><a data-tel data-tel-text href="#"></a></li>
+          <li><svg class="ic"><use href="#i-pin"/></svg><span data-address></span></li>
+          <li><svg class="ic"><use href="#i-globe"/></svg><a data-website href="#" target="_blank" rel="noopener"></a></li>
+          <li><svg class="ic"><use href="#i-pin"/></svg><a data-maps href="#" target="_blank" rel="noopener">Get Directions</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h4>Hours</h4>
+        <ul id="hoursListFooter"></ul>
+      </div>
+    </div>
+    <div class="footer-bar">
+      <div class="container fb-inner">
+        <p>© <span id="year"></span> One-K Coffee. All rights reserved.</p>
+        <p class="fb-note">Good Coffee • Better Days</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating call & back-to-top -->
+  <a class="fab fab-call" data-tel href="#" aria-label="Call One-K Coffee"><svg class="ic"><use href="#i-phone"/></svg></a>
+  <button class="fab fab-top" id="toTop" aria-label="Back to top"><svg class="ic"><use href="#i-chev-up"/></svg></button>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Gallery image viewer">
+    <button class="lb-btn lb-close" id="lbClose" aria-label="Close viewer"><svg class="ic"><use href="#i-x"/></svg></button>
+    <button class="lb-btn lb-prev" id="lbPrev" aria-label="Previous photo"><svg class="ic"><use href="#i-chev-l"/></svg></button>
+    <figure class="lb-figure"><img id="lbImg" src="" alt=""><figcaption id="lbCap"></figcaption></figure>
+    <button class="lb-btn lb-next" id="lbNext" aria-label="Next photo"><svg class="ic"><use href="#i-chev-r"/></svg></button>
+  </div>
+
+  <script>
+  (function () {
+    'use strict';
+
+    /* =====================================================================
+       SITE CONTENT — "ADMIN-READY" DATA LAYER (EDIT EVERYTHING HERE)
+       ---------------------------------------------------------------------
+       This single object is the ONE source of truth for the page. It is
+       intentionally shaped like the JSON a backend would return, so later
+       you can connect Base44 / Supabase / Firebase etc. by fetching the
+       same structure and calling renderAll(data).
+
+       IMPORTANT (honest note): this static file by itself CANNOT provide
+       secure login or a database. Secure editing requires a real backend.
+    ===================================================================== */
+    const SITE_DATA = {
+      business: {
+        name: "One-K Coffee",
+        tagline: "Good Coffee • Better Days",
+        phoneDisplay: "+251 924 135 379",          // EDIT if needed
+        phoneHref: "tel:+251924135379",
+        website: "https://one-kcoffee.base44.app",
+        websiteLabel: "one-kcoffee.base44.app",
+        address: "Addis Ababa, Ethiopia",
+        mapsUrl: "https://maps.app.goo.gl/Rnk4CHhcoqHNMVEb6?g_st=it"
+      },
+
+      /* Hero background video(s), played in order and looped.
+         Currently the Mixkit clip; you can swap in a local file
+         like "hero-video-1.mp4" or add more URLs to the array.
+         If a video fails to load, the hero falls back to a coffee image. */
+      hero: {
+        videos: ["https://assets.mixkit.co/videos/43941/43941-720.mp4"]
+      },
+
+      /* EDIT: e.g. time: "7:00 AM – 9:00 PM". Empty time = "To be confirmed". */
+      hours: [
+        { day: "Monday – Friday", time: "" },
+        { day: "Saturday",        time: "" },
+        { day: "Sunday",          time: "" }
+      ],
+
+      /* EDIT: menu items — set price: "" shows a dash; e.g. price: "120 ETB".
+         cat: "hot" | "cold" | "traditional" | "snacks" */
+      menu: [
+        { name: "Espresso",      cat: "hot", price: "", tag: "",
+          desc: "A rich, aromatic shot pulled from freshly ground beans.",
+          img: "https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=800&q=60",
+          alt: "Espresso shot in a small cup" },
+        { name: "Cappuccino",    cat: "hot", price: "", tag: "",
+          desc: "Velvety steamed milk, bold espresso, and a cloud of foam.",
+          img: "https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=800&q=60",
+          alt: "Cappuccino with foam art" },
+        { name: "Café Latte",    cat: "hot", price: "", tag: "",
+          desc: "Smooth espresso wrapped in silky steamed milk.",
+          img: "https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=800&q=60",
+          alt: "Latte with heart-shaped art" },
+        { name: "Americano",     cat: "hot", price: "", tag: "",
+          desc: "Espresso lengthened with hot water — clean and bold.",
+          img: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=60",
+          alt: "Americano coffee in a white cup" },
+        { name: "Mocha",         cat: "hot", price: "", tag: "",
+          desc: "Espresso and chocolate, finished with steamed milk.",
+          img: "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=60",
+          alt: "Mocha coffee beside coffee beans" },
+        { name: "Jebena Buna",   cat: "traditional", price: "", tag: "House Favorite",
+          desc: "Ethiopian coffee brewed the traditional way and served in a jebena.",
+          img: "https://images.unsplash.com/photo-1459755486867-b55449bb39ff?auto=format&fit=crop&w=800&q=60",
+          alt: "Traditional dark coffee served in a clay cup" },
+        { name: "Iced Latte",    cat: "cold", price: "", tag: "",
+          desc: "Chilled espresso over ice with cold, creamy milk.",
+          img: "https://images.unsplash.com/photo-1517959105821-eaf2591984ca?auto=format&fit=crop&w=800&q=60",
+          alt: "Iced latte in a tall glass" },
+        { name: "Fresh Croissant", cat: "snacks", price: "", tag: "",
+          desc: "Baked daily — flaky, golden, and perfect with any cup.",
+          img: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=800&q=60",
+          alt: "Golden fresh croissants" },
+        { name: "Cake of the Day", cat: "snacks", price: "", tag: "",
+          desc: "Ask at the counter for today's fresh slice.",
+          img: "https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=800&q=60",
+          alt: "Slice of cake with berries on a plate" }
+      ],
+
+      /* EDIT: replace with real photos of your shop, dishes and team. */
+      gallery: [
+        { src: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&q=60",
+          full: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1600&q=70",
+          alt: "Fresh cup of coffee with roasted beans", caption: "A fresh cup, brewed with care" },
+        { src: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=900&q=60",
+          full: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1600&q=70",
+          alt: "Inside the coffee shop", caption: "Inside the café" },
+        { src: "https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=900&q=60",
+          full: "https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=1600&q=70",
+          alt: "Coffee being brewed by hand", caption: "The perfect pour" },
+        { src: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=900&q=60",
+          full: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1600&q=70",
+          alt: "Cozy seating inside the café", caption: "Our cozy corner" },
+        { src: "https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=900&q=60",
+          full: "https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=1600&q=70",
+          alt: "Friends enjoying coffee together", caption: "Good company, better coffee" },
+        { src: "https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&w=900&q=60",
+          full: "https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&w=1600&q=70",
+          alt: "Cup of coffee on a wooden table", caption: "Made to savor" }
+      ],
+
+      /* EDIT: paste your real page URLs. Empty url = link is a placeholder. */
+      social: [
+        { name: "Facebook",  icon: "i-fb", url: "" },
+        { name: "Instagram", icon: "i-ig", url: "" },
+        { name: "TikTok",    icon: "i-tt", url: "" },
+        { name: "Telegram",  icon: "i-tg", url: "" }
+      ]
+    };
+
+    /* ---------------- helpers ---------------- */
+    const $  = (s, c) => (c || document).querySelector(s);
+    const $$ = (s, c) => Array.from((c || document).querySelectorAll(s));
+    const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const b = SITE_DATA.business;
+
+    /* ---------------- contact bindings ---------------- */
+    $$('[data-tel]').forEach(a => {
+      a.href = b.phoneHref;
+      if (a.hasAttribute('data-tel-text')) a.textContent = b.phoneDisplay;
+    });
+    $$('[data-maps]').forEach(a => { a.href = b.mapsUrl; a.target = '_blank'; a.rel = 'noopener'; });
+    $$('[data-website]').forEach(a => { a.href = b.website; a.textContent = b.websiteLabel; });
+    $$('[data-address]').forEach(el => el.textContent = b.address);
+    $('#year').textContent = new Date().getFullYear();
+
+    /* ---------------- hours render ---------------- */
+    function renderHoursInto(ul) {
+      ul.innerHTML = SITE_DATA.hours.map(h => `
+        <li class="${h.time ? '' : 'pending'}">
+          <span>${h.day}</span><span class="dots"></span>
+          <strong>${h.time || 'To be confirmed'}</strong>
+        </li>`).join('');
+    }
+    renderHoursInto($('#hoursList'));
+    renderHoursInto($('#hoursListFooter'));
+    $('#hoursNotice').hidden = SITE_DATA.hours.every(h => h.time); // hide note once all hours are set
+
+    /* ---------------- social render ---------------- */
+    function renderSocialInto(box) {
+      box.innerHTML = SITE_DATA.social.map(s => `
+        <a class="soc" href="${s.url || '#'}" aria-label="${s.name}"
+           ${s.url ? 'target="_blank" rel="noopener"' : ''}
+           title="${s.url ? s.name : 'Add your ' + s.name + ' link in SITE_DATA'}">
+          <svg class="ic"><use href="#${s.icon}"/></svg>
+        </a>`).join('');
+    }
+    renderSocialInto($('#socialVisit'));
+    renderSocialInto($('#socialFooter'));
+
+    /* ---------------- menu render + filters ---------------- */
+    const CATS = [
+      { k: 'all', l: 'All' }, { k: 'hot', l: 'Hot Coffee' }, { k: 'cold', l: 'Cold & Iced' },
+      { k: 'traditional', l: 'Traditional' }, { k: 'snacks', l: 'Snacks' }
+    ];
+    const filters = $('#menuFilters'), grid = $('#menuGrid');
+    filters.innerHTML = CATS.map((c, i) =>
+      `<button class="mf-btn${i === 0 ? ' active' : ''}" data-filter="${c.k}" aria-pressed="${i === 0}">${c.l}</button>`).join('');
+
+    grid.innerHTML = SITE_DATA.menu.map(m => `
+      <article class="menu-card" data-cat="${m.cat}" data-reveal>
+        <figure class="mc-media">
+          ${m.tag ? `<span class="mc-tag">${m.tag}</span>` : ''}
+          <img src="${m.img}" alt="${m.alt}" loading="lazy" decoding="async">
+        </figure>
+        <div class="mc-body">
+          <div class="mc-row"><h3>${m.name}</h3><span class="mc-price">${m.price || '—'}</span></div>
+          <p>${m.desc}</p>
+        </div>
+      </article>`).join('');
+
+    filters.addEventListener('click', e => {
+      const btn = e.target.closest('[data-filter]');
+      if (!btn) return;
+      $$('.mf-btn', filters).forEach(x => {
+        const on = x === btn;
+        x.classList.toggle('active', on);
+        x.setAttribute('aria-pressed', on);
+      });
+      const f = btn.dataset.filter;
+      $$('.menu-card', grid).forEach(c => {
+        const show = f === 'all' || c.dataset.cat === f;
+        c.classList.toggle('hide', !show);
+        if (show) { c.classList.remove('pop'); void c.offsetWidth; c.classList.add('pop'); }
+      });
+    });
+
+    /* ---------------- gallery render ---------------- */
+    const gGrid = $('#galleryGrid');
+    gGrid.innerHTML = SITE_DATA.gallery.map((g, i) => `
+      <figure class="g-item" data-reveal>
+        <button class="g-btn" type="button" data-lb="${i}" aria-label="Open photo: ${g.caption}">
+          <img src="${g.src}" alt="${g.alt}" loading="lazy" decoding="async">
+        </button>
+        <figcaption class="g-cap">${g.caption}</figcaption>
+      </figure>`).join('');
+
+    /* ---------------- lightbox ---------------- */
+    const lb = $('#lightbox'), lbImg = $('#lbImg'), lbCap = $('#lbCap');
+    let lbIndex = 0, lbOpen = false, lastFocus = null;
+    function updateLB() {
+      const g = SITE_DATA.gallery[lbIndex];
+      lbImg.src = g.full; lbImg.alt = g.alt; lbCap.textContent = g.caption;
+    }
+    function openLB(i) {
+      lbIndex = i; updateLB();
+      lastFocus = document.activeElement;
+      lb.hidden = false; lbOpen = true;
+      document.body.classList.add('no-scroll');
+      $('#lbClose').focus();
+    }
+    function closeLB() {
+      lb.hidden = true; lbOpen = false;
+      document.body.classList.remove('no-scroll');
+      if (lastFocus) lastFocus.focus();
+    }
+    function stepLB(d) {
+      lbIndex = (lbIndex + d + SITE_DATA.gallery.length) % SITE_DATA.gallery.length;
+      updateLB();
+    }
+    $('#lbClose').addEventListener('click', closeLB);
+    $('#lbPrev').addEventListener('click', () => stepLB(-1));
+    $('#lbNext').addEventListener('click', () => stepLB(1));
+    lb.addEventListener('click', e => { if (e.target === lb) closeLB(); });
+    gGrid.addEventListener('click', e => {
+      const btn = e.target.closest('[data-lb]');
+      if (btn) openLB(+btn.dataset.lb);
+    });
+
+    /* ---------------- navigation ---------------- */
+    const header = $('#siteHeader'), nav = $('#siteNav'),
+          toggle = $('#navToggle'), overlay = $('#navOverlay'), toTop = $('#toTop');
+    function setMenu(open) {
+      nav.classList.toggle('open', open);
+      overlay.classList.toggle('show', open);
+      toggle.setAttribute('aria-expanded', open);
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      document.body.classList.toggle('no-scroll', open);
+    }
+    toggle.addEventListener('click', () => setMenu(!nav.classList.contains('open')));
+    overlay.addEventListener('click', () => setMenu(false));
+    $$('.nav-links a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') { lbOpen ? closeLB() : setMenu(false); }
+      if (lbOpen && e.key === 'ArrowRight') stepLB(1);
+      if (lbOpen && e.key === 'ArrowLeft') stepLB(-1);
+    });
+
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      header.classList.toggle('scrolled', y > 40);
+      toTop.classList.toggle('show', y > 600);
+    }, { passive: true });
+    toTop.addEventListener('click', () =>
+      window.scrollTo({ top: 0, behavior: REDUCED ? 'auto' : 'smooth' }));
+
+    /* ---------------- active nav link on scroll ---------------- */
+    const spy = new IntersectionObserver(entries => {
+      entries.forEach(en => {
+        if (en.isIntersecting) {
+          $$('.nav-link').forEach(l =>
+            l.classList.toggle('is-active', l.getAttribute('href') === '#' + en.target.id));
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    $$('main section[id]').forEach(s => spy.observe(s));
+
+    /* ---------------- scroll-reveal animations ---------------- */
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(en => {
+        if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, { threshold: .12, rootMargin: '0px 0px -40px' });
+    $$('[data-reveal]').forEach((el, i) => {
+      if (REDUCED) { el.classList.add('in'); return; }
+      const delay = (i % 4) * 70;
+      el.style.transitionDelay = delay + 'ms';
+      el.addEventListener('transitionend', () => el.style.transitionDelay = '', { once: true });
+      io.observe(el);
+    });
+
+    /* ---------------- hero video (autplay · loop · muted · graceful fallback) -------- */
+    const hero = $('.hero'), video = $('#heroVideo');
+    if (video) {
+      const list = SITE_DATA.hero.videos.filter(Boolean);
+      if (REDUCED || !list.length) {
+        hero.classList.add('no-video');                    // image fallback only
+      } else {
+        video.muted = true;                                // guarantees autoplay is allowed
+        let idx = 0, fails = 0;
+        const playAt = i => {
+          idx = i;
+          video.loop = (list.length === 1);                // native loop for a single clip
+          video.src = list[idx];
+          video.load();
+          video.play().catch(() => {});
+        };
+        video.addEventListener('error', () => {            // video missing/blocked → next → image fallback
+          fails++;
+          if (fails >= list.length) hero.classList.add('no-video');
+          else playAt((idx + 1) % list.length);
+        });
+        video.addEventListener('canplay', () => hero.classList.add('video-ready'), { once: true });
+        video.addEventListener('ended', () => playAt((idx + 1) % list.length));
+        playAt(0);
+      }
+    }
+
+    /* ---------------- image fallback (never show a broken image) ---------------- */
+    const FALLBACK_IMG = 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&q=60';
+    document.addEventListener('error', e => {
+      const t = e.target;
+      if (t.tagName === 'IMG' && !t.dataset.fb) { t.dataset.fb = '1'; t.src = FALLBACK_IMG; }
+    }, true);
+  })();
+  </script>
+</body>
+</html>
